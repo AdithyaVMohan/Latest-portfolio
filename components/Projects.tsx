@@ -51,11 +51,17 @@ export default function Projects() {
                   )}
                 </div>
 
-                <ul className="space-y-2.5 mb-6 flex-1">
+                <ul className="space-y-3 mb-6 flex-1">
                   {project.points.map((pt, idx) => (
-                    <li key={idx} className="flex gap-2 text-sm text-muted leading-relaxed">
-                      <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-violet/70" />
-                      {pt}
+                    <li
+                      key={idx}
+                      className="flex gap-3 text-sm text-muted leading-relaxed"
+                    >
+                      <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-violet/70" />
+
+                      <span className="text-justify flex-1">
+                        {pt}
+                      </span>
                     </li>
                   ))}
                 </ul>

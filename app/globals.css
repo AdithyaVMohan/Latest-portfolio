@@ -14,18 +14,27 @@
   --glass-bg-1: rgba(255, 255, 255, 0.06);
   --glass-bg-2: rgba(255, 255, 255, 0.02);
   --glass-border: rgba(255, 255, 255, 0.09);
+
   --glass-strong-1: rgba(255, 255, 255, 0.09);
   --glass-strong-2: rgba(255, 255, 255, 0.03);
   --glass-strong-border: rgba(255, 255, 255, 0.12);
 
-  --grid-glow: radial-gradient(circle at 50% 0%, rgba(124, 92, 255, 0.18), transparent 60%);
+  --grid-glow: radial-gradient(
+    circle at 50% 0%,
+    rgba(124, 92, 255, 0.18),
+    transparent 60%
+  );
+
   --grain-blend: overlay;
   --grain-opacity: 0.035;
 
   color-scheme: dark;
 }
 
-/* Day view — same structure, lighter, still glassy rather than flat white */
+/* =========================================================
+   LIGHT THEME
+   ========================================================= */
+
 [data-theme="light"] {
   --color-void: #eef1f8;
   --color-surface: #ffffff;
@@ -38,16 +47,26 @@
   --glass-bg-1: rgba(16, 19, 28, 0.055);
   --glass-bg-2: rgba(16, 19, 28, 0.015);
   --glass-border: rgba(16, 19, 28, 0.1);
+
   --glass-strong-1: rgba(16, 19, 28, 0.075);
   --glass-strong-2: rgba(16, 19, 28, 0.02);
   --glass-strong-border: rgba(16, 19, 28, 0.14);
 
-  --grid-glow: radial-gradient(circle at 50% 0%, rgba(91, 61, 224, 0.1), transparent 60%);
+  --grid-glow: radial-gradient(
+    circle at 50% 0%,
+    rgba(91, 61, 224, 0.1),
+    transparent 60%
+  );
+
   --grain-blend: multiply;
   --grain-opacity: 0.02;
 
   color-scheme: light;
 }
+
+/* =========================================================
+   GLOBAL HTML
+   ========================================================= */
 
 html {
   scroll-behavior: smooth;
@@ -55,10 +74,13 @@ html {
   transition: background-color 0.5s ease;
 }
 
+/* Respect user's reduced-motion preference */
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
+
   *,
   *::before,
   *::after {
@@ -69,75 +91,198 @@ html {
   }
 }
 
+/* =========================================================
+   BODY
+   ========================================================= */
+
 body {
   overflow-x: hidden;
+  background-color: var(--color-void);
+  color: var(--color-ink);
+
+  /* Prevent unnecessary rendering complexity */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
 
 ::-webkit-scrollbar {
   width: 10px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #05070d;
+  background: var(--color-void);
 }
+
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #5ff0e0, #7c5cff);
+  background: linear-gradient(
+    180deg,
+    var(--color-cyan),
+    var(--color-violet)
+  );
   border-radius: 999px;
 }
 
-::selection {
-  background: rgba(95, 240, 224, 0.25);
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    var(--color-violet),
+    var(--color-cyan)
+  );
 }
 
+/* =========================================================
+   SELECTION
+   ========================================================= */
+
+::selection {
+  background: rgba(95, 240, 224, 0.25);
+  color: var(--color-ink);
+}
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
 :focus-visible {
-  outline: 2px solid #5ff0e0;
+  outline: 2px solid var(--color-cyan);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-/* Glass panel primitive */
+/* =========================================================
+   GLASS PANEL
+   Lightweight version for smoother scrolling
+   ========================================================= */
+
 .glass {
-  background: linear-gradient(180deg, var(--glass-bg-1), var(--glass-bg-2));
-  backdrop-filter: blur(20px) saturate(140%);
-  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  background: linear-gradient(
+    180deg,
+    var(--glass-bg-1),
+    var(--glass-bg-2)
+  );
+
+  /* Reduced from 20px → 12px */
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+
   border: 1px solid var(--glass-border);
-  transition: background 0.5s ease, border-color 0.5s ease;
+
+  transition:
+    background 0.5s ease,
+    border-color 0.5s ease;
 }
+
+/* =========================================================
+   STRONG GLASS PANEL
+   ========================================================= */
 
 .glass-strong {
-  background: linear-gradient(180deg, var(--glass-strong-1), var(--glass-strong-2));
-  backdrop-filter: blur(28px) saturate(160%);
-  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  background: linear-gradient(
+    180deg,
+    var(--glass-strong-1),
+    var(--glass-strong-2)
+  );
+
+  /* Reduced from 28px → 16px */
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+
   border: 1px solid var(--glass-strong-border);
-  transition: background 0.5s ease, border-color 0.5s ease;
+
+  transition:
+    background 0.5s ease,
+    border-color 0.5s ease;
 }
 
-/* Grain overlay for cinematic texture */
+/* =========================================================
+   GRAIN OVERLAY
+   ========================================================= */
+
 .grain {
   position: fixed;
   inset: 0;
+
   pointer-events: none;
+
   z-index: 60;
+
   opacity: var(--grain-opacity);
+
   mix-blend-mode: var(--grain-blend);
+
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+/* =========================================================
+   GRADIENT TEXT
+   ========================================================= */
+
 .text-gradient {
-  background: linear-gradient(90deg, var(--color-ink) 0%, var(--color-cyan) 45%, var(--color-violet) 100%);
+  background: linear-gradient(
+    90deg,
+    var(--color-ink) 0%,
+    var(--color-cyan) 45%,
+    var(--color-violet) 100%
+  );
+
   -webkit-background-clip: text;
   background-clip: text;
+
   color: transparent;
 }
 
+/* =========================================================
+   SECTION EYEBROW
+   ========================================================= */
+
 .section-eyebrow {
   font-family: var(--font-mono);
+
   letter-spacing: 0.25em;
+
   font-size: 0.7rem;
+
   text-transform: uppercase;
+
   color: var(--color-cyan);
 }
 
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
 .divider-line {
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--glass-strong-border), transparent);
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--glass-strong-border),
+    transparent
+  );
+}
+
+/* =========================================================
+   PERFORMANCE HELPERS
+   ========================================================= */
+
+/* Let the browser optimize large sections while scrolling */
+section {
+  contain: layout style;
+}
+
+/* Avoid accidental horizontal scrolling */
+img,
+svg,
+video {
+  max-width: 100%;
+}
+
+/* Improve touch scrolling on mobile */
+body {
+  -webkit-overflow-scrolling: touch;
 }

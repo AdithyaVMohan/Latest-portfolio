@@ -17,7 +17,7 @@ export function useTheme() {
 }
 
 export default function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("light");
+  const [theme, setTheme] = useState<Theme>("dark");
 
   // Sync with whatever the no-flash inline script already applied to <html>.
   useEffect(() => {
