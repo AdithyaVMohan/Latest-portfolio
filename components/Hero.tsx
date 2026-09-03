@@ -402,62 +402,48 @@ export default function Hero() {
 
           {/* Description */}
           <motion.p
-            variants={item}
-            className="
-              mt-5
-              text-base
-              sm:text-lg
-              text-muted
-              max-w-lg
-              mx-auto
-              md:mx-0
-              leading-relaxed
-              font-mono
-            "
-          >
-            Building end-to-end web applications with{" "}
-            <span className="text-ink">
-              React.js, Next.js, Node.js, PostgreSQL
-            </span>{" "}
-            and{" "}
-            <span className="text-ink">
-              TypeScript
-            </span>{" "}
-            — from requirements through deployment.
-          </motion.p>
+              variants={item}
+              className="
+                mt-5
+                text-base
+                sm:text-sm
+                text-muted
+                max-w-lg
+                mx-auto
+                md:mx-0
+                leading-relaxed
+                font-mono
+              "
+            >
+              Full Stack Developer who enjoys turning ideas into clean, intuitive,
+              and reliable digital experiences. I focus on solving real-world
+              problems, building scalable applications, and delivering projects
+              from concept to deployment.
+            </motion.p>
 
-          {/* Technology stack */}
+          {/* Location */}
           <motion.div
             variants={item}
             className="
-              mt-6
+              mt-8
               flex
-              flex-wrap
+              items-center
               justify-center
               md:justify-start
               gap-2
+              text-sm
+              text-muted
+              font-mono
             "
           >
-            {profile.stack.map((s) => (
-              <span
-                key={s}
-                className="
-                  glass
-                  rounded-full
-                  px-3.5
-                  py-1.5
-                  text-xs
-                  font-mono
-                  tracking-wide
-                  text-cyan
-                "
-              >
-                {s}
-              </span>
-            ))}
+            <MapPin
+              size={14}
+              className="text-cyan"
+            />
+
+            {profile.residency}
           </motion.div>
 
-          {/* Buttons */}
           <motion.div
             variants={item}
             className="
@@ -495,54 +481,8 @@ export default function Hero() {
               <Mail size={16} />
               Get in touch
             </a>
-
-            {/* GitHub */}
-            <a
-              href={profile.links.github}
-              target="_blank"
-              rel="noreferrer"
-              className="
-                inline-flex
-                items-center
-                gap-2
-                rounded-full
-                glass
-                px-6
-                py-3
-                text-sm
-                font-medium
-                text-ink
-                hover:text-cyan
-                transition-colors
-              "
-            >
-              <Github size={16} />
-              GitHub
-            </a>
           </motion.div>
-
-          {/* Location */}
-          <motion.div
-            variants={item}
-            className="
-              mt-8
-              flex
-              items-center
-              justify-center
-              md:justify-start
-              gap-2
-              text-sm
-              text-muted
-              font-mono
-            "
-          >
-            <MapPin
-              size={14}
-              className="text-cyan"
-            />
-
-            {profile.residency}
-          </motion.div>
+          
         </motion.div>
       </div>
 

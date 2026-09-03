@@ -20,8 +20,7 @@ export default function Skills() {
       <div className="mx-auto max-w-6xl relative">
         <SectionHeading
           eyebrow="Skills"
-          title="A full-stack toolkit"
-          description="Grouped exactly as it maps to day-to-day delivery — frontend, backend, data, and the tools that hold it together."
+          title="Technologies I work with"
         />
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -45,7 +44,7 @@ export default function Skills() {
                   {group.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="rounded-full border border-glass-border bg-white/[0.03] px-3 py-1 text-xs text-muted hover:text-cyan hover:border-cyan/40 transition-colors"
+                      className="rounded-full border border-glass-border bg-white/[0.03] px-3 py-1 text-xs text-cyan hover:border-cyan/40 transition-colors"
                     >
                       {skill}
                     </span>

@@ -12,8 +12,7 @@ export default function Projects() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Projects"
-          title="Selected builds"
-          description="Full-stack applications spanning UI, APIs, auth, and schema design."
+          title="Things I've built"
         />
 
         <div className="grid md:grid-cols-2 gap-6">

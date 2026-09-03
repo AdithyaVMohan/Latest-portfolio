@@ -11,8 +11,7 @@ export default function Experience() {
       <div className="mx-auto max-w-6xl">
         <SectionHeading
           eyebrow="Experience"
-          title="Where the work happened"
-          description="Ordered from most recent — each role built on the last."
+          title="My Background"
         />
 
         <div className="relative pl-8 sm:pl-10">
@@ -44,7 +43,7 @@ export default function Experience() {
                 <GlassCard className="p-6">
                   {/* Role + Period */}
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-1">
-                    <h3 className="font-display text-lg text-ink">
+                    <h3 className="font-display text-sm text-ink">
                       {job.role}
                     </h3>
 

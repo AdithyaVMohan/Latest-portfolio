@@ -16,81 +16,100 @@ const stats = [
 export default function About() {
   return (
     <section id="about" className="relative py-28 px-6">
-      <div className="mx-auto max-w-6xl">
+  <div className="mx-auto max-w-6xl">
+    <div className="grid md:grid-cols-5 gap-10 lg:gap-8 items-center">
+
+      {/* LEFT — PHOTO ONLY */}
+      <motion.div
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="md:col-span-2"
+      >
+        <GlassCard strong className="p-3">
+          <div className="relative h-[420px] w-full overflow-hidden rounded-xl">
+            <Image
+              src={profile.summaryphoto}
+              alt={`${profile.name}, Full Stack Developer`}
+              fill
+              sizes="(max-width: 768px) 90vw, 28rem"
+              className="object-cover"
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-t from-void/70 via-transparent to-transparent" />
+
+            <div className="absolute bottom-4 left-4 right-4">
+              <p className="font-display text-sm text-ink">
+                {profile.name}
+              </p>
+
+              <p className="text-xs font-mono text-cyan tracking-wide whitespace-nowrap">
+                {profile.title}
+              </p>
+            </div>
+          </div>
+        </GlassCard>
+      </motion.div>
+
+      {/* RIGHT — ABOUT CONTENT */}
+      <motion.div
+        initial={{ opacity: 0, x: 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{
+          duration: 0.8,
+          ease: [0.16, 1, 0.3, 1],
+          delay: 0.1,
+        }}
+        className="md:col-span-3"
+      >
+        {/* ABOUT HEADING */}
         <SectionHeading
           eyebrow="About"
-          title="From requirements to production"
+          title="Turning Ideas Into Digital Experiences"
           description="A snapshot of who I am and how I work."
         />
 
-        <div className="grid md:grid-cols-5 gap-8 items-start">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="md:col-span-2"
-          >
-            <GlassCard strong className="p-3">
-              <div className="relative h-[420px] w-full overflow-hidden rounded-xl">
-                <Image
-                  src={profile.summaryphoto}
-                  alt={`${profile.name}, Full Stack Developer`}
-                  fill
-                  sizes="(max-width: 768px) 90vw, 28rem"
-                  className="object-cover"
-                />
-
-                <div className="absolute inset-0 bg-gradient-to-t from-void/70 via-transparent to-transparent" />
-
-                <div className="absolute bottom-4 left-4 right-4">
-                  <p className="font-display text-sm text-ink">
-                    {profile.name}
-                  </p>
-                  <p className="text-xs font-mono text-cyan tracking-wide">{profile.title}</p>
-                </div>
-              </div>
-            </GlassCard>
-
-            <div className="grid grid-cols-2 gap-3 mt-4">
-              {stats.map((s) => (
-                <GlassCard key={s.label} className="p-4 text-center">
-                  <p className="font-display text-2xl text-gradient">{s.value}</p>
-                  <p className="text-xs text-muted mt-1">{s.label}</p>
-                </GlassCard>
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-            className="md:col-span-3 space-y-5"
-          >
-            {summary.map((p, i) => (
-              <p key={i} className="text-muted leading-relaxed text-base sm:text-base text-justify font-mono">
-                {p}
-              </p>
-            ))}
-
-            <div className="divider-line my-6" />
-
-            <div className="flex flex-wrap gap-3">
-              <GlassCard className="px-4 py-2">
-                <span className="text-xs font-mono text-cyan">{profile.email}</span>
-              </GlassCard>
-              <GlassCard className="px-4 py-2">
-                <span className="text-xs font-mono text-cyan">{profile.phone}</span>
-              </GlassCard>
-              <GlassCard className="px-4 py-2">
-                <span className="text-xs font-mono text-cyan">{profile.location}</span>
-              </GlassCard>
-            </div>
-          </motion.div>
+        {/* ABOUT PARAGRAPHS */}
+        <div className="space-y-5 mt-2">
+          {summary.map((p, i) => (
+            <p
+              key={i}
+              className="text-muted leading-relaxed text-sm text-justify font-mono"
+            >
+              {p}
+            </p>
+          ))}
         </div>
-      </div>
-    </section>
+
+        {/* DIVIDER */}
+        <div className="divider-line my-3" />
+
+        {/* CONTACT INFO */}
+        <div className="flex flex-wrap gap-3">
+          <GlassCard className="px-4 py-2">
+            <span className="text-xs font-mono text-cyan">
+              {profile.email}
+            </span>
+          </GlassCard>
+
+          <GlassCard className="px-4 py-2">
+            <span className="text-xs font-mono text-cyan">
+              {profile.phone}
+            </span>
+          </GlassCard>
+
+          <GlassCard className="px-4 py-2">
+            <span className="text-xs font-mono text-cyan">
+              {profile.location}
+            </span>
+          </GlassCard>
+        </div>
+      </motion.div>
+
+    </div>
+  </div>
+</section>
   );
 }
