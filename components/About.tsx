@@ -40,16 +40,24 @@ export default function About() {
             <div className="absolute inset-0 bg-gradient-to-t from-void/70 via-transparent to-transparent" />
 
             <div className="absolute bottom-4 left-4 right-4">
-              <p className="font-display text-sm text-ink">
+              <p className="font-display text-sm text-black">
                 {profile.name}
               </p>
 
-              <p className="text-xs font-mono text-cyan tracking-wide whitespace-nowrap">
+              <p className="text-sm font-mono text-cyan tracking-wide whitespace-nowrap">
                 {profile.title}
               </p>
             </div>
           </div>
         </GlassCard>
+         <div className="grid grid-cols-3 gap-4 mt-3">
+              {stats.map((s) => (
+                <GlassCard key={s.label} className="p-4 text-center">
+                  <p className="font-display text-2xl text-gradient">{s.value}</p>
+                  <p className="text-xs text-muted mt-1">{s.label}</p>
+                </GlassCard>
+              ))}
+            </div>
       </motion.div>
 
       {/* RIGHT — ABOUT CONTENT */}
@@ -87,25 +95,25 @@ export default function About() {
         <div className="divider-line my-3" />
 
         {/* CONTACT INFO */}
-        <div className="flex flex-wrap gap-3">
-          <GlassCard className="px-4 py-2">
-            <span className="text-xs font-mono text-cyan">
-              {profile.email}
-            </span>
-          </GlassCard>
+          <div className="flex flex-wrap gap-3">
+            <GlassCard className="px-4 py-2">
+              <span className="text-xs font-mono text-cyan">
+                {profile.email}
+              </span>
+            </GlassCard>
 
-          <GlassCard className="px-4 py-2">
-            <span className="text-xs font-mono text-cyan">
-              {profile.phone}
-            </span>
-          </GlassCard>
+            <GlassCard className="px-4 py-2">
+              <span className="text-xs font-mono text-cyan">
+                {profile.phone}
+              </span>
+            </GlassCard>
 
-          <GlassCard className="px-4 py-2">
-            <span className="text-xs font-mono text-cyan">
-              {profile.location}
-            </span>
-          </GlassCard>
-        </div>
+            <GlassCard className="px-4 py-2">
+              <span className="text-xs font-mono text-cyan">
+                {profile.location}
+              </span>
+            </GlassCard>
+          </div>
       </motion.div>
 
     </div>
