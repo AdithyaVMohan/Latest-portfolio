@@ -239,25 +239,25 @@ export default function Hero() {
             >
               {/* Icon */}
              <span
-                className={`
-                  flex
-                  h-10
-                  w-10
-                  sm:h-11
-                  sm:w-11
-                  items-center
-                  justify-center
-                  rounded-lg
-                  ${tech.bg}
-                  font-mono
-                  text-sm
-                  sm:text-base
-                  font-bold
-                  ${tech.color}
-                `}
-              >
-                {tech.short}
-              </span>
+              className={`
+                flex
+                h-12
+                w-12
+                sm:h-14
+                sm:w-14
+                items-center
+                justify-center
+                rounded-lg
+                ${tech.bg}
+                font-mono
+                text-xl
+                sm:text-2xl
+                font-bold
+                ${tech.color}
+              `}
+            >
+              {tech.short}
+            </span>
 
               {/* Label */}
               <span
