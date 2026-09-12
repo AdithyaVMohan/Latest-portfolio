@@ -9,7 +9,7 @@ export const profile = {
   phone: "+971 563787981",
   location: "Sharjah, UAE",
   residency: "UAE Resident — no employer sponsorship required",
-  photo: "/assets/adithya.jpg",
+  photo: "/assets/adithya.jpeg",
   summaryphoto:"/assets/bwphoto.jpeg",
   links: {
     linkedin: "https://www.linkedin.com/in/adithyavmohan/", 
